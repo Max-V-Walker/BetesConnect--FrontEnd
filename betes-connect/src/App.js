@@ -3,7 +3,11 @@ import React, { useState } from 'react';
 import { Route } from 'react-router-dom';
 import { Context } from './components/Context'
 
+import Landing from './components/Landing';
 import Homepage from './components/Homepage';
+import Bookmarks from './components/Bookmarks';
+import ProfilePage from './components/ProfilePage';
+import Messages from './components/Messages';
 import Type1 from './components/Type1';
 import Type2 from './components/Type2';
 import Pregnancy from './components/Pregnancy';
@@ -66,7 +70,11 @@ function likePost(post, username){
   return (
     <>
     <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, loggedIn, setLoggedIn, likePost}}>
+      <Route exact path='/' component={Landing}/>
       <Route exact path='/home' component={Homepage}/>
+      <Route exact path='/bookmarks' component={Bookmarks}/>
+      <Route exact path='/messages' component={Messages}/>
+      <Route exact path={`/profile/${user.username}`} component={ProfilePage}/>
       <Route exact path='/general-diabetes/type1' component={Type1}/>
       <Route exact path='/general-diabetes/type2' component={Type2}/>
       <Route exact path='/general-diabetes/pregnancy' component={Pregnancy}/>

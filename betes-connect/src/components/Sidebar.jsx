@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
-function Sidebar(props) {
+function Sidebar() {
     return (
         <div>
             <ul>
                 <li>General Diabetes</li>
                 <ul>
-                    <li><Link to='general-diabetes/type1'>Type 1</Link></li>
-                    <li><Link to='general-diabetes/type2'>Type 2</Link></li>
-                    <li><Link to='general-diabetes/pregnancy'>Pregnancy</Link></li>
-                    <li><Link to='general-diabetes/friends&family'>Friends & Family</Link></li>
+                    <li><Link to='/general-diabetes/type1'>Type 1</Link></li>
+                    <li><Link to='/general-diabetes/type2'>Type 2</Link></li>
+                    <li><Link to='/general-diabetes/pregnancy'>Pregnancy</Link></li>
+                    <li><Link to='/general-diabetes/friends&family'>Friends & Family</Link></li>
                 </ul>
                 <li>Day to Day</li>
                 <ul>
@@ -23,7 +23,7 @@ function Sidebar(props) {
                 </ul>
                 <li>The Long Run</li>
                 <ul>
-                    <li><Link to='the-long-run/depression-&-staying-positive'>Depression & Staying Positive</Link></li>
+                    <li><Link to='/the-long-run/depression-&-staying-positive'>Depression & Staying Positive</Link></li>
                     <li><Link to='/the-long-run/complications'>Complications</Link></li>
                     <li><Link to='/the-long-run/sex-&-intimacy'>Sex & Intimacy</Link></li>
                     <li><Link to='/the-long-run/insulin-supplies-assistance'>Insulin/Supplies Assistance</Link></li>

@@ -17,6 +17,7 @@ function PostFeed() {
   const postFeed = sortedPosts.map(post => {
     return (
       <div key={post._id}>
+        <img src={user.profilePhoto} alt={user.username} style={{height: '50px', width: '50px'}}/>
         <h4>{post.headline}</h4>
         <div>
             <p>@{post.author}</p>
