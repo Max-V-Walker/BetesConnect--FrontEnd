@@ -19,7 +19,7 @@ const CreatePost = () => {
     e.preventDefault()
     const newPost = {
       headline: e.target.headline.value,
-      author: user.username,
+      author: user._id,
       content: e.target.post.value
     }
     addPost(newPost)

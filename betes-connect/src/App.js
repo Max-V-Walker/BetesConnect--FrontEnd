@@ -48,10 +48,11 @@ async function getPosts () {
 }
 
 // axios update request
-async function updatePost (postId, newContent) {
+async function updatePost (postId, newContent, newHeadline) {
   const url = `${baseURL}/posts/${postId}`
-  const updatedPosts = await axios.put(url, newContent)
-  setPosts(updatedPosts.data)
+  const updatedPosts = await axios.put(url, {content: newContent, headline: newHeadline, author: user._id})
+  // setPosts(updatedPosts.data)
+  getPosts()
 }
 
 //Like function
@@ -67,9 +68,22 @@ function likePost(post, username){
   }
 }
 
+//Bookmark function
+function bookmarkPost(post, username){
+  const tempBookmarks = [...post.bookmarks]
+  if (tempBookmarks.includes(username)) {
+    const index = tempBookmarks.indexOf(username)
+    tempBookmarks.splice(index, 1)
+    updatePost(post._id, {bookmarks: tempBookmarks})
+  } else {
+    tempBookmarks.push(username)
+    updatePost(post._id, {bookmarks: tempBookmarks})
+  }
+}
+
   return (
     <>
-    <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, loggedIn, setLoggedIn, likePost}}>
+    <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, loggedIn, setLoggedIn, likePost, bookmarkPost}}>
       <Route exact path='/' component={Landing}/>
       <Route exact path='/home' component={Homepage}/>
       <Route exact path='/bookmarks' component={Bookmarks}/>

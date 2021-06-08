@@ -9,8 +9,8 @@ const heart = <FontAwesomeIcon icon={faHeart} />;
 const edit = <FontAwesomeIcon icon={faEdit} />;
 const bookmark = <FontAwesomeIcon icon={faBookmark} />;
 
-function UserPosts({modalStyling}) {
-  const {baseURL, posts, setPosts, user, likePost } = useContext(Context)
+function UserPosts() {
+  const {baseURL, posts, setPosts, user, likePost, bookmarkPost} = useContext(Context)
   
   async function deletePost (postId) {
     const url = `${baseURL}/posts/${postId}`
@@ -27,9 +27,9 @@ function UserPosts({modalStyling}) {
   // Setting up react-Modal hooks and functions:
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [postToBeEdited, setPostToBeEdited] = useState({});
-  function openEditModal(id, content) {
+  function openEditModal(id, content, headline) {
     setModalIsOpen(true)
-    setPostToBeEdited({id: id, content: content})
+    setPostToBeEdited({id: id, content: content, headline: headline})
   }
 
   const sortedPosts = [...posts].reverse().filter(post => post.author === user.username)
@@ -42,12 +42,16 @@ function UserPosts({modalStyling}) {
           <h5>@{post.author}</h5>
           <p>{post.content}</p>
         </div>
-        <nav className='navbar border-top'>
-          <i className="btn" onClick={() => openEditModal(post._id, post.content)}>{edit}</i>
+
+        <nav>
+          <i className="btn" onClick={() => openEditModal(post._id, post.content, post.headline)}>{edit}</i>
+
           <i className="btn" onClick={() => likePost(post, user.username)}>
-          <i className="btn">{bookmark}</i>
             {heart} <span className='badge badge-light'>{post.likes.length}</span>
           </i>
+
+          <i className="btn" onClick={() => bookmarkPost(post, user.username)}>{bookmark} <span className='badge badge-light'>{post.bookmarks.length}</span></i>
+
           <button className='trash' onClick={deletePosting} name={post._id}>🗑️</button>
         </nav>
         </>
@@ -57,7 +61,7 @@ function UserPosts({modalStyling}) {
     <div>
       {profileFeed}
       { modalIsOpen && 
-        <EditPost modalStyling={modalStyling} post={postToBeEdited} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>
+        <EditPost post={postToBeEdited} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>
       }
     </div>
   )

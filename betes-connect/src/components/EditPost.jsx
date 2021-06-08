@@ -15,12 +15,16 @@ function EditPost({ post, modalIsOpen, setModalIsOpen }) {
   function editPost (e) {
     e.preventDefault()
     const postId = e.target.name
-    const newContent = {content: e.target.newContent.value}
-    const newHeadline = {headline: e.target.newHeadline.value}
+
+    const newHeadline = e.target.newHeadline.value
+    console.log(newHeadline)
+
+    const newContent = e.target.newContent.value
+    console.log(newContent)
+
     updatePost(postId, newContent, newHeadline)
     toggleModal()
   }
-
 
   return (
     <Modal isOpen={modalIsOpen} onRequestClose={toggleModal}>
@@ -28,8 +32,11 @@ function EditPost({ post, modalIsOpen, setModalIsOpen }) {
         <h2>Edit Post</h2>
         <form onSubmit={editPost} name={post.id}>
         <div>
-          <textarea type='text' name='newHeadline' placeholder="New headline" defaultValue={post.headline}/>
-          <textarea type='text' name='newContent' placeholder="New content" defaultValue={post.content}/>
+
+          <textarea type='text' name='newHeadline' placeholder="New headline" defaultValue={post.headline} />
+
+          <textarea type='text' name='newContent' placeholder="New content" defaultValue={post.content} />
+
         </div>
         <div>
           <button className="modalButton" type='submit'>Save</button>
