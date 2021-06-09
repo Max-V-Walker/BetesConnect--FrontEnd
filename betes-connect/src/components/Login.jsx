@@ -9,7 +9,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 function Login() {
-    const {baseURL, setUser, setLoggedIn, loggedIn} = useContext(Context)
+    const {baseURL, user, setUser, setLoggedIn, loggedIn} = useContext(Context)
     const [passwordShown, setPasswordShown] = useState(false)
 
     if (loggedIn) return <Redirect to='/home' />

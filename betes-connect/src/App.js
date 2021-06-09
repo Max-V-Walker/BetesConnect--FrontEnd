@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { Context } from './components/Context'
 
@@ -39,6 +39,7 @@ async function getPosts () {
   const url = `${baseURL}/posts/`
   await axios.get(url)
   .then(res => {
+    console.log(res.data);
     setPosts(res.data)
   })
   .catch(error => {
@@ -47,6 +48,7 @@ async function getPosts () {
   })
 }
 
+useEffect(()=> {getPosts()}, [])
 // axios update request
 async function updatePost (postId, newContent, newHeadline) {
   const url = `${baseURL}/posts/${postId}`
@@ -55,6 +57,7 @@ async function updatePost (postId, newContent, newHeadline) {
   getPosts()
 }
 
+// Functionality
 //Like function
 function likePost(post, username){
   const tempLikes = [...post.likes]
@@ -65,6 +68,9 @@ function likePost(post, username){
   } else {
     tempLikes.push(username)
     updatePost(post._id, {likes: tempLikes})
+    console.log('Working!');
+    console.log(username);
+    console.log(post._id);
   }
 }
 
@@ -78,12 +84,26 @@ function bookmarkPost(post, username){
   } else {
     tempBookmarks.push(username)
     updatePost(post._id, {bookmarks: tempBookmarks})
+    console.log('Working!');
+  }
+}
+
+//Comment function
+function commentThread(post, username){
+  const tempComments = [...post.thread]
+  if (tempComments.includes(username)) {
+    const index = tempComments.indexOf(username)
+    tempComments.splice(index, 1)
+    updatePost(post._id, {thread: tempComments})
+  } else {
+    tempComments.push(username)
+    updatePost(post._id, {thread: tempComments})
   }
 }
 
   return (
     <>
-    <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, loggedIn, setLoggedIn, likePost, bookmarkPost}}>
+    <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, loggedIn, setLoggedIn, likePost, bookmarkPost, commentThread}}>
       <Route exact path='/' component={Landing}/>
       <Route exact path='/home' component={Homepage}/>
       <Route exact path='/bookmarks' component={Bookmarks}/>

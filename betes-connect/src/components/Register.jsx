@@ -6,25 +6,26 @@ import { Context } from './Context';
 function Register() {
     const {baseURL, setUser, loggedIn, setLoggedIn} = useContext(Context)
 
-    if (loggedIn) return <Redirect to='/homepage' />
+    if (loggedIn) return <Redirect to='/home' />
 
     async function addUser (newUser) {
         const url = `${baseURL}/users`
-        await axios.post(url, newUser)
-        setUser(newUser)
+        const response = await axios.post(url, newUser)
+        setUser(response.data)
         setLoggedIn(true)
     }
     
     function signUp(e) {
         e.preventDefault()
         const newUser = {
-            username: e.target.username.value,
             name: e.target.name.value,
+            username: e.target.username.value,
             password: e.target.password.value,
             connection: e.target.connection.value,
             dob: e.target.dob.value,
             location: e.target.location.value,
-            aboutMe: e.target.aboutMe.value
+            aboutMe: e.target.aboutMe.value,
+            profilePhoto: e.target.profilePhoto.value
         }
         addUser(newUser)
     }
@@ -60,6 +61,10 @@ function Register() {
 
                     <div>
                         <input type='text' placeholder='About Me' name='aboutMe'/>
+                    </div>
+
+                    <div>
+                        <input type='text' placeholder='Add Profile Photo' name='profilePhoto'/>
                     </div>
 
                     <div>
