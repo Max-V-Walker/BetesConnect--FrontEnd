@@ -7,8 +7,8 @@ import {faImages} from '@fortawesome/free-regular-svg-icons'
 const photo = <FontAwesomeIcon icon={faImages} />
 
 const CreatePost = () => {
-  const {baseURL, getPosts, user} = useContext(Context) 
-  console.log(user);
+  const {baseURL, getPosts, user} = useContext(Context)
+
   async function addPost (newPost) {
     const url = `${baseURL}/posts`
     await axios.post(url, newPost)

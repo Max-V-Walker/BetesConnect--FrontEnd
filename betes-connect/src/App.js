@@ -7,6 +7,7 @@ import Landing from './components/Landing';
 import Homepage from './components/Homepage';
 import Bookmarks from './components/Bookmarks';
 import ProfilePage from './components/ProfilePage';
+import ProfilePage2 from './components/ProfilePage2';
 import Messages from './components/Messages';
 import Type1 from './components/Type1';
 import Type2 from './components/Type2';
@@ -39,7 +40,6 @@ async function getPosts () {
   const url = `${baseURL}/posts/`
   await axios.get(url)
   .then(res => {
-    console.log(res.data);
     setPosts(res.data)
   })
   .catch(error => {
@@ -53,8 +53,13 @@ useEffect(()=> {getPosts()}, [])
 async function updatePost (postId, newContent, newHeadline) {
   const url = `${baseURL}/posts/${postId}`
   const updatedPosts = await axios.put(url, {content: newContent, headline: newHeadline, author: user._id})
-  // setPosts(updatedPosts.data)
-  getPosts()
+  getPosts(updatedPosts)
+}
+
+// Setting up react-Modal hooks and functions:
+const [userInfoModalIsOpen, setUserInfoModalIsOpen] = useState(false);  
+function openUserInfoModal() {
+  setUserInfoModalIsOpen(true)
 }
 
 // Functionality
@@ -84,31 +89,22 @@ function bookmarkPost(post, username){
   } else {
     tempBookmarks.push(username)
     updatePost(post._id, {bookmarks: tempBookmarks})
-    console.log('Working!');
+    console.log('BM Working!');
   }
 }
-
-//Comment function
-function commentThread(post, username){
-  const tempComments = [...post.thread]
-  if (tempComments.includes(username)) {
-    const index = tempComments.indexOf(username)
-    tempComments.splice(index, 1)
-    updatePost(post._id, {thread: tempComments})
-  } else {
-    tempComments.push(username)
-    updatePost(post._id, {thread: tempComments})
-  }
-}
-
-  return (
-    <>
-    <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, loggedIn, setLoggedIn, likePost, bookmarkPost, commentThread}}>
+    
+    return (
+      <>
+    <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, loggedIn, setLoggedIn, likePost, bookmarkPost, userInfoModalIsOpen, setUserInfoModalIsOpen, openUserInfoModal}}>
       <Route exact path='/' component={Landing}/>
       <Route exact path='/home' component={Homepage}/>
       <Route exact path='/bookmarks' component={Bookmarks}/>
       <Route exact path='/messages' component={Messages}/>
+
       <Route exact path={`/profile/${user.username}`} component={ProfilePage}/>
+
+      <Route exact path="/profile/:username" render={(routerProps) => <ProfilePage2 match={routerProps.match}/>}/>
+
       <Route exact path='/general-diabetes/type1' component={Type1}/>
       <Route exact path='/general-diabetes/type2' component={Type2}/>
       <Route exact path='/general-diabetes/pregnancy' component={Pregnancy}/>

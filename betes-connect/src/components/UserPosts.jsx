@@ -33,8 +33,7 @@ function UserPosts() {
   }
 
   const sortedPosts = [...posts].reverse().filter(post => post.author.username === user.username)
-  console.log(posts.reverse().filter(post => post.author.username === user.username));
-  console.log(sortedPosts);
+  
   const profileFeed = sortedPosts.map(post => {
     return (
       <div>

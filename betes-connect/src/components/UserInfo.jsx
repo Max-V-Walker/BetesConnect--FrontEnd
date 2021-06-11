@@ -1,14 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "./Context";
 import EditUser from './EditUser'
 
 function UserInfo() {
-    const {user} = useContext(Context)
-    // Setting up react-Modal hooks and functions:
-    const [userInfoModalIsOpen, setUserInfoModalIsOpen] = useState(false);  
-    function openUserInfoModal() {
-      setUserInfoModalIsOpen(true)
-    }
+    const {user, userInfoModalIsOpen, openUserInfoModal, setUserInfoModalIsOpen} = useContext(Context)
+    
     return (
         <div>
              <div>
