@@ -3,9 +3,9 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import PostFeed from './PostFeed';
 
-function Homepage(props) {
+function Homepage() {
     return (
-        <div>
+        <div className='homepageDiv'>
             <Header />
             <Sidebar />
             <PostFeed />

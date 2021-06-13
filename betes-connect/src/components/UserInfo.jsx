@@ -8,19 +8,18 @@ function UserInfo() {
     return (
         <div>
              <div>
-                <div>
+                <div className='userBlock'>
                     <div>
-                        <img onClick={openUserInfoModal} alt={user.username} src={user.profilePhoto}/>
+                        <img onClick={openUserInfoModal} alt={user.username} src={user.profilePhoto} className='userPic profilePic'/>
                     </div>
-                    <h3>@{user.username}</h3>
-                    <p>{user.name}</p>
-                    <p>{user.dob}</p>
-                    <p>{user.location}</p>
-                    <p>{user.connection}</p>
-                    <p><strong>About me:</strong> {user.aboutMe}</p>
-                </div>
-                <div>
-                    <button type='button'>Message</button>
+                    <div className='userInfo'>
+                        <h3>@{user.username}</h3>
+                        <p>{user.name}</p>
+                        <p>{user.dob}</p>
+                        <p>{user.location}</p>
+                        <p>{user.connection}</p>
+                        <p><strong>About me:</strong> {user.aboutMe}</p>
+                    </div>
                 </div>
                 <div>
                     { userInfoModalIsOpen &&

@@ -37,14 +37,13 @@ function UserPosts() {
   const profileFeed = sortedPosts.map(post => {
     return (
       <div>
-        <div key={post._id}>
+        <div key={post._id} className='userPosts'>
           <img src={post.author.profilePhoto} alt={user.username} style={{height: '50px', width: '50px'}}/>
           <h5>{post.headline}</h5>
           <h5>@{post.author.username}</h5>
           <p>{post.content}</p>
         </div>
-          
-          <nav>
+          <div className='btnBar'>
           <i className="btn" onClick={() => openEditModal(post._id, post.content, post.headline)}>{edit}</i>
           
           <i className="btn" onClick={() => likePost(post, user.username)}>
@@ -53,8 +52,8 @@ function UserPosts() {
           
           <i className="btn" onClick={() => bookmarkPost(post, user.username)}>{bookmark} <span className='badge badge-light'>{post.bookmarks.length}</span></i>
           
-          <button className='trash' onClick={deletePosting} name={post._id}>🗑️ </button>
-        </nav>
+          <button className='btn trash' onClick={deletePosting} name={post._id}>🗑️ </button>
+        </div>
       </div>
     )
   })

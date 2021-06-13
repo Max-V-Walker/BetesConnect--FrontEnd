@@ -17,10 +17,8 @@ function EditPost({ post, modalIsOpen, setModalIsOpen }) {
     const postId = e.target.name
 
     const newHeadline = e.target.newHeadline.value
-    console.log(newHeadline)
 
     const newContent = e.target.newContent.value
-    console.log(newContent)
 
     updatePost(postId, newContent, newHeadline)
     toggleModal()
@@ -39,8 +37,8 @@ function EditPost({ post, modalIsOpen, setModalIsOpen }) {
 
         </div>
         <div>
-          <button className="modalButton" type='submit'>Save</button>
-          <button className="modalButton" onClick={toggleModal}>Close</button>
+          <button type='submit'>Save</button>
+          <button onClick={toggleModal}>Close</button>
         </div>
 
         </form>

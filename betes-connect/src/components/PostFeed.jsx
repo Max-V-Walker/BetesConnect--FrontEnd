@@ -1,62 +1,69 @@
 import React, { useContext } from 'react';
-import axios from 'axios';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Context } from './Context';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faComment, faBookmark } from "@fortawesome/free-regular-svg-icons";
-
-import ProfilePage from './ProfilePage';
 
 const heart = <FontAwesomeIcon icon={faHeart} />;
 const commentButton = <FontAwesomeIcon icon={faComment} />;
 const bookmark = <FontAwesomeIcon icon={faBookmark} />;
 
 function PostFeed() {
-  const {user, posts, likePost, bookmarkPost, getPosts, baseURL} = useContext(Context)
-  
-  // function comment(e) {
-  //   e.preventDefault()
-  //   async function addComment (newComment) {
-  //     const url = `${baseURL}/posts`
-  //     await axios.post(url, newComment)
-  //     getPosts()
-  //   }
-  //   const newComment = {
-  //     author: user._id,
-  //     content: e.target.post.value
-  //   }
-  //   addComment(newComment)
-  //   e.target.reset()
-  // }
-
+  const {user, posts, likePost, bookmarkPost, comment} = useContext(Context)
 
   let sortedPosts = [...posts].reverse()
 
   // creating <div> tags for each post to be rendered.
   const postFeed = sortedPosts.map(post => {
     return(
-      <div key={post._id}>
-        <Link to={`/profile/${post.author.username}`} key={user.username}><img src={post.author.profilePhoto} alt={user.username} style={{height: '50px', width: '50px'}}/></Link>
+      <div key={post._id} className='userPosts'>
+        <Link to={`/profile/${post.author.username}`} key={user.username}><img src={post.author.profilePhoto} alt={user.username} className='userPic' style={{height: '50px', width: '50px'}}/></Link>
         <h4>{post.headline}</h4>
         <div>
             <p>@{post.author.username}</p>
             <p>{post.content}</p>
+            <div>
+
+            <form onSubmit={comment}>
+              <input type='text' name='body' />
+              <input type='hidden' name='postId' value={post._id} />
+              <input type='hidden' name='commentor' value={user.username} />
+              <button type='submit'>Comment</button>
+            </form>
+
+          </div>
         </div>
-        <nav className='navbar border-top'>
-          {/* <i onClick={() => comment(post, user.username)}className="far fa-comments btn">{commentButton}</i> */}
+        <div className='btnBar'>
+          <i className="far fa-comments btn">{commentButton}</i>
 
           <i onClick={() => likePost(post, user.username)} className="far fa-heart btn">{heart}<span>{post.likes.length}</span></i>
 
           <i onClick={() => bookmarkPost(post, user.username)} className="far fa-bookmark btn"> {bookmark} <span>{post.bookmarks.length}</span></i>
-        </nav>
+        </div>
       </div>
     )
-    }
-  )
+  })
+
+  // let sortedComments = [...posts.comments[]].reverse()
+  // creating <div> tags for each comment to be rendered.
+  let i
+  const commentFeed = posts.map(post => {
+    console.log(post.comments.length)
+    for(i=0; i<post.comments.length; i++){
+        return(
+          <div key={post._id} className='userPosts'>
+            <Link to={`/profile/${post.comments[i].commentor}`} key={post.comments[i].commentor}><img src={post.comments[i].commentor} alt={post.comments[i].commentor} className='userPic' style={{height: '40px', width: '40px'}}/></Link>
+            <h4>@{post.comments[i].commentor}</h4>
+            <p>{post.comments[i].body}</p>
+            <i onClick={() => likePost(post, user.username)} className="far fa-heart btn">{heart}<span>{post.comments[i].likes.length}</span></i>
+          </div>
+        )}
+  })
 
   return(
       <div>
           {postFeed}
+          {commentFeed} 
       </div>
   )
 }

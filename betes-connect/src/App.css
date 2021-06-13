@@ -1,0 +1,76 @@
+.homepageDiv {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.profilePageDiv {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.userPic{
+    border: black solid 2px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+  
+.userPic:hover{
+    opacity: .5;
+}
+
+.userPosts{
+    border: 2px black solid;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.btnBar{
+    border: black 2px solid;
+    border-radius: 5px;
+}
+
+.btn{
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.trash{
+    background-color: white;
+    border: none;
+}
+
+.sidebar{
+    position: fixed;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.sidebarTopic{
+    text-align: center;
+}
+
+li{
+    list-style-type: none;
+    padding: 5px;
+    /* text-align: center; */
+}
+
+.userBlock{
+    border: black solid 2px;
+    padding: 5px;
+}
+
+.userInfo{
+    border: black solid 2px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.profilePic{
+    border-radius: 50%;
+    border: black solid 2px;
+}
