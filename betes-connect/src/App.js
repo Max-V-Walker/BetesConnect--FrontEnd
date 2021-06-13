@@ -2,12 +2,12 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { Context } from './components/Context'
+import './App.css'
 
 import Landing from './components/Landing';
 import Homepage from './components/Homepage';
 import Bookmarks from './components/Bookmarks';
 import ProfilePage from './components/ProfilePage';
-import ProfilePage2 from './components/ProfilePage2';
 import Messages from './components/Messages';
 import Type1 from './components/Type1';
 import Type2 from './components/Type2';
@@ -47,8 +47,8 @@ async function getPosts () {
     console.log(error)
   })
 }
-
 useEffect(()=> {getPosts()}, [])
+
 // axios update request
 async function updatePost (postId, newContent, newHeadline) {
   const url = `${baseURL}/posts/${postId}`
@@ -66,44 +66,65 @@ function openUserInfoModal() {
 //Like function
 function likePost(post, username){
   const tempLikes = [...post.likes]
+  const url = `${baseURL}/posts/${post._id}`
   if (tempLikes.includes(username)) {
     const index = tempLikes.indexOf(username)
     tempLikes.splice(index, 1)
-    updatePost(post._id, {likes: tempLikes})
+    const updatedLikes = axios.put(url, {likes: tempLikes})
+      .then(res => console.log("Likes work"))
+      getPosts(updatedLikes)
   } else {
     tempLikes.push(username)
-    updatePost(post._id, {likes: tempLikes})
-    console.log('Working!');
-    console.log(username);
-    console.log(post._id);
+    const updatedLikes = axios.put(url, {likes: tempLikes})
+      .then(res => console.log("Likes work"))
+    getPosts(updatedLikes)
   }
 }
 
 //Bookmark function
 function bookmarkPost(post, username){
   const tempBookmarks = [...post.bookmarks]
+  const url = `${baseURL}/posts/${post._id}`
   if (tempBookmarks.includes(username)) {
     const index = tempBookmarks.indexOf(username)
     tempBookmarks.splice(index, 1)
-    updatePost(post._id, {bookmarks: tempBookmarks})
+    const updatedBookmarks = axios.put(url, {bookmarks: tempBookmarks})
+    getPosts(updatedBookmarks)
   } else {
     tempBookmarks.push(username)
-    updatePost(post._id, {bookmarks: tempBookmarks})
-    console.log('BM Working!');
+    const updatedBookmarks = axios.put(url, {bookmarks: tempBookmarks})
+    getPosts(updatedBookmarks)
   }
 }
+
+  async function comment(e) {
+    e.preventDefault()
+    const postId = e.target.postId.value
+    const newComment = {
+      body: e.target.body.value,
+      commentor: e.target.commentor.value
+    }
+    const url = `${baseURL}/posts/${postId}`
+    const post = await axios.get(url)
+    .then(res => res.data)
+    const tempComments = [...post.comments]
+    tempComments.push(newComment)
+
+    const updatedComments = await axios.put(url, {comments: tempComments})
+      .then(res => console.log("Comments work", res))
+    getPosts(updatedComments)
+    e.target.reset()
+  }
     
     return (
       <>
-    <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, loggedIn, setLoggedIn, likePost, bookmarkPost, userInfoModalIsOpen, setUserInfoModalIsOpen, openUserInfoModal}}>
+    <Context.Provider value={{baseURL, user, setUser, posts, setPosts, getPosts, updatePost, comment, loggedIn, setLoggedIn, likePost, bookmarkPost, userInfoModalIsOpen, setUserInfoModalIsOpen, openUserInfoModal}}>
       <Route exact path='/' component={Landing}/>
       <Route exact path='/home' component={Homepage}/>
       <Route exact path='/bookmarks' component={Bookmarks}/>
       <Route exact path='/messages' component={Messages}/>
 
-      <Route exact path={`/profile/${user.username}`} component={ProfilePage}/>
-
-      <Route exact path="/profile/:username" render={(routerProps) => <ProfilePage2 match={routerProps.match}/>}/>
+      <Route exact path="/profile/:username" render={(routerProps) => <ProfilePage match={routerProps.match}/>}/>
 
       <Route exact path='/general-diabetes/type1' component={Type1}/>
       <Route exact path='/general-diabetes/type2' component={Type2}/>
