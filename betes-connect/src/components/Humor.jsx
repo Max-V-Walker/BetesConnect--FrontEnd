@@ -9,7 +9,6 @@ function Humor(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm humor</p>
         </div>
     );
 }

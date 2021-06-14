@@ -30,13 +30,15 @@ function Header() {
 
     return(
         <>
-        <img src={randomPicArr.[randomPic]} alt='advertisment'/>
-        <div>
-            <Link to={'/home'}><i className="iconSize btn">{home}</i></Link>
-            <Link to={`/profile/${user.username}`}><i className="iconSize btn">{profile}</i></Link>
-            <Link to={'/bookmarks'}><i className="iconSize btn">{bookmark}</i></Link>
-            <Link to={'/messages'}><i className="iconSize btn">{DM}</i></Link>
-            <Link><i className='signOut iconSize btn' onClick={signOut}>{signout}</i></Link>
+        <div className='totalHeader'>
+            <img src={randomPicArr.[randomPic]} alt='advertisment'/>
+            <div className='headerLinks'>
+                <Link to={'/home'}><i className="iconSize btn">{home}</i></Link>
+                <Link to={`/profile/${user.username}`}><i className="iconSize btn">{profile}</i></Link>
+                <Link to={'/bookmarks'}><i className="iconSize btn">{bookmark}</i></Link>
+                <Link to={'/messages'}><i className="iconSize btn">{DM}</i></Link>
+                <Link><i className='signOut iconSize btn' onClick={signOut}>{signout}</i></Link>
+            </div>
         </div>
         </>
     )

@@ -9,7 +9,6 @@ function OtherMedConditions(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm other medical conditions</p>
         </div>
     );
 }

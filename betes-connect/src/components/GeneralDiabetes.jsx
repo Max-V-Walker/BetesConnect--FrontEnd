@@ -9,7 +9,6 @@ function GeneralDiabetes(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <h1>I'm general diabetes</h1>
         </div>
     );
 }

@@ -5,10 +5,12 @@ import PostFeed from './PostFeed';
 
 function Homepage() {
     return (
-        <div className='homepageDiv'>
+        <div>
             <Header />
-            <Sidebar />
-            <PostFeed />
+            <div className='homepageDiv'>
+                <Sidebar />
+                <PostFeed />
+            </div>
         </div>
     );
 }

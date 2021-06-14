@@ -9,7 +9,6 @@ function FoodDiet(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm food & diet</p>
         </div>
     );
 }

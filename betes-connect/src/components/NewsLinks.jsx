@@ -9,7 +9,6 @@ function NewsLinks(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm news & links</p>
         </div>
     );
 }

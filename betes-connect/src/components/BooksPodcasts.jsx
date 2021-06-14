@@ -9,7 +9,6 @@ function BooksPodcasts(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm books & podcasts</p>
         </div>
     );
 }

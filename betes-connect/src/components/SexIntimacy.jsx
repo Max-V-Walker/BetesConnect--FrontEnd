@@ -9,7 +9,6 @@ function SexIntamacy(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm sex & intimacy</p>
         </div>
     );
 }

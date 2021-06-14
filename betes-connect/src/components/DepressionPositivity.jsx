@@ -9,7 +9,6 @@ function DepressionPositivity(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm depression and stying positive</p>
         </div>
     );
 }

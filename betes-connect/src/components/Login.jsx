@@ -39,19 +39,19 @@ function Login() {
     };
 
     return (
-        <div>
+        <div className='logIn'>
             <h3>Log In</h3>
             <form onSubmit={handleLogin}>
                 <div>
-                    <label>Username</label>
-                    <input type='text' placeholder='Enter your username' name='username'/>
+                    <label>Username:</label>
+                    <input type='text' placeholder='Enter your username' name='username' className='logInInput'/>
                 </div>
                 <div>
-                    <label>Password <i onClick={togglePasswordVisiblity}>{eye}</i> </label>
-                    <input type={passwordShown ? "text" : "password"} placeholder='Enter your password' name='password' /> 
+                    <label>Password:<i onClick={togglePasswordVisiblity}>{eye}</i> </label>
+                    <input type={passwordShown ? "text" : "password"} placeholder='Enter your password' name='password' className='logInInput'/> 
                 </div>
                 <div>
-                    <button type="submit">Login</button> 
+                    <button type="submit" className='logInBtn'>Login</button> 
                 </div>
                 <div>
                     <a href="#">Forgot Password?</a>

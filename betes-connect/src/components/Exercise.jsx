@@ -9,7 +9,6 @@ function Exercise(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm exercise</p>
         </div>
     );
 }

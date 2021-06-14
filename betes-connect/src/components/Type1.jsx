@@ -10,7 +10,6 @@ function Type1() {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm type1</p>
             <PostFeed />
         </div>
     );

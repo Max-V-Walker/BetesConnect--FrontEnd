@@ -28,7 +28,7 @@ const CreatePost = () => {
 
   return (
   <div>
-    <div>
+    <div className='createPost'>
       <form onSubmit={post}>
         <textarea type='text' name='headline' placeholder={'headline'}/>
         <textarea type='text' name='post' placeholder={'post'}/>

@@ -47,16 +47,16 @@ function ProfilePage({ match }) {
   const profileFeed2 = sortedPosts.map((post) => {
     return (
       <div>
-        <div key={post._id} className='userPosts'>
+        <div key={post._id} className='userPosts profilePosts'>
           <img
             src={post.author.profilePhoto}
             alt={newUser.username}
             style={{ height: "50px", width: "50px" }}
+            className='userPic'
           />
           <h5>{post.headline}</h5>
           <h5>@{post.author.username}</h5>
           <p>{post.content}</p>
-        </div>
 
         <div className='btnBar'>
           <i className="btn" onClick={() => likePost(post, newUser.username)}>
@@ -67,10 +67,11 @@ function ProfilePage({ match }) {
           <i
             className="btn"
             onClick={() => bookmarkPost(post, newUser.username)}
-          >
+            >
             {bookmark}{" "}
             <span className="badge badge-light">{post.bookmarks.length}</span>
           </i>
+        </div>
         </div>
       </div>
     );
@@ -98,14 +99,13 @@ function ProfilePage({ match }) {
   );
 
   return (
-    <div className='profilePageDiv'>
-      <Header />
-      <Sidebar />
-      {isLoggedIn ? <UserInfo />  : userInfo}
-      {/* <div>
-        <button type="button">Message</button>
-      </div> */}
-      {isLoggedIn ? <UserPosts /> : profileFeed2}
+    <div>
+        <Header />
+      <div className='profilePageDiv'>
+        <Sidebar />
+        {isLoggedIn ? <UserInfo />  : userInfo}
+        {isLoggedIn ? <UserPosts /> : profileFeed2}
+      </div>
     </div>
   );
 }

@@ -9,7 +9,6 @@ function Weightlossgain(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm weight loss/gain</p>
         </div>
     );
 }
