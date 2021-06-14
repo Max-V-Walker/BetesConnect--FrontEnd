@@ -32,43 +32,43 @@ function Register() {
 
     
     return (
-        <div>
+        <div className='register'>
             <h3>Sign Up</h3>
             <form onSubmit={signUp}>
                     <div>
-                        <input type='text' placeholder='First & Last Name' name='name'/>
+                        <input type='text' placeholder='First & Last Name' name='name' className='registerInput'/>
                     </div>
 
                     <div>
-                        <input type='text' placeholder='Username' name='username'/>
+                        <input type='text' placeholder='Username' name='username' className='registerInput'/>
                     </div>
         
                     <div>
-                        <input type='password' placeholder='Password' name='password'/>
+                        <input type='password' placeholder='Password' name='password' className='registerInput'/>
                     </div>
 
                     <div>
-                        <input type='text' placeholder='Connection To DB' name='connection'/>
+                        <input type='text' placeholder='Connection To DB' name='connection' className='registerInput'/>
                     </div>
 
                     <div>
-                        <input type='text' placeholder='Date of birth' name='dob'/>
+                        <input type='text' placeholder='Date of birth' name='dob' className='registerInput'/>
                     </div>
 
                     <div>
-                        <input type='text' placeholder='Location' name='location'/>
+                        <input type='text' placeholder='Location' name='location' className='registerInput'/>
                     </div>
 
                     <div>
-                        <input type='text' placeholder='About Me' name='aboutMe'/>
+                        <input type='text' placeholder='About Me' name='aboutMe' className='registerInput'/>
                     </div>
 
                     <div>
-                        <input type='text' placeholder='Add Profile Photo' name='profilePhoto'/>
+                        <input type='text' placeholder='Add Profile Photo' name='profilePhoto' className='registerInput'/>
                     </div>
 
                     <div>
-                        <button type="submit">Sign Up</button>
+                        <button type="submit" className='signUpBtn'>Sign Up</button>
                     </div>
             </form>
         </div>

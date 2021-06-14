@@ -9,7 +9,6 @@ function Pregnancy(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm pregnancy</p>
         </div>
     );
 }

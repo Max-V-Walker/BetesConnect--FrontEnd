@@ -16,9 +16,10 @@ const {comment, posts, likePost, user, bookmarkPost} = useContext(Context)
 let sortedPosts = [...posts].reverse()
   // creating <div> tags for each post to be rendered.
 const bookmarkFeed = sortedPosts.map(post => {
-    if(post.bookmarks.length>0){
+    if(post.bookmarks.length>0 && post.bookmarks.includes(user.username)){
+    // if(post.bookmarks.length>0){
         return(
-            <div key={post._id} className='userPosts'>
+            <div key={post._id} className=' userPosts bookmarkedPosts'>
                 <Link to={`/profile/${post.author.username}`} key={user.username}><img src={post.author.profilePhoto} alt={user.username} className='userPic' style={{height: '50px', width: '50px'}}/></Link>
                 <h4>{post.headline}</h4>
                 <div>

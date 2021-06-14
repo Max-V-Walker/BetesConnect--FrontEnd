@@ -9,7 +9,6 @@ function TheLongRun(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <h1>I'm TLR</h1>
         </div>
     );
 }

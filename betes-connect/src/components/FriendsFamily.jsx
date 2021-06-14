@@ -9,7 +9,6 @@ function FriendsFamily(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm friends & family</p>
         </div>
     );
 }

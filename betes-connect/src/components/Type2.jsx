@@ -9,7 +9,6 @@ function Type2(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm type2</p>
         </div>
     );
 }

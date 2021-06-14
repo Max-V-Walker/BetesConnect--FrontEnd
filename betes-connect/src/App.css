@@ -1,17 +1,19 @@
 .homepageDiv {
-    display: flex;
+    display: inline-flex;
     width: 100%;
     align-items: stretch;
+    justify-content: space-between;
 }
 
-.profilePageDiv {
-    display: flex;
+/* .profilePageDiv {
+    display: inline-flex;
     width: 100%;
     align-items: stretch;
-}
+    justify-content: space-between;
+} */
 
 .userPic{
-    border: black solid 2px;
+    border: blue solid 2px;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -20,12 +22,19 @@
     opacity: .5;
 }
 
-.userPosts{
+.userPostsHome{
     border: 2px black solid;
     border-radius: 5px;
-    margin: 5px;
+    margin-left: 330px;
     padding: 5px;
 }
+
+/* .userPostsHome{
+    border: 2px black solid;
+    border-radius: 5px;
+    margin-left: 330px;
+    padding: 5px;
+} */
 
 .btnBar{
     border: black 2px solid;
@@ -43,25 +52,49 @@
     border: none;
 }
 
-.sidebar{
-    position: fixed;
-    text-align: center;
-    margin: 0 auto;
+.totalHeader{
+    border: black solid 2px;
 }
 
-.sidebarTopic{
+.headerLinks{
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
     text-align: center;
+
+}
+.sidebar{
+    position: absolute;
+    /* text-align: center; */
+    border: black 2px solid;
 }
 
 li{
     list-style-type: none;
+    color: blue;
     padding: 5px;
+}
+
+.sidebarTopic{
     /* text-align: center; */
+    margin-left: 50px;
+    text-decoration: underline;
+    padding-top: 30px;
+}
+.sidebarLink{
+    text-align: left;
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.sidebarLink:hover {
+    opacity: .5;
 }
 
 .userBlock{
     border: black solid 2px;
     padding: 5px;
+    margin-left: 330px;
 }
 
 .userInfo{
@@ -70,7 +103,93 @@ li{
     padding: 5px;
 }
 
+.userPosts{
+    border: black solid 2px;
+    padding: 5px;
+}
+
 .profilePic{
     border-radius: 50%;
+    border: blue solid 2px;
+    margin-left: 200px;
+}
+
+.profilePic:hover{
+    opacity: .5;
+    cursor: pointer;
+}
+
+.forumBtn{
+    color: limegreen;
+}
+
+.register{
+    /* display: flex;
+    width: 100%;
+    align-items: stretch;
+    justify-content: space-between; */
+    border: blue solid 3px;
+    border-radius: 5px;;
+    padding: 5px;
+    width: 20%;
+}
+
+.registerInput{
     border: black solid 2px;
+    border-radius: 5px;
+    margin: 2px;
+
+}
+
+.signUpBtn{
+    margin: 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.signUpBtn:hover{
+    cursor: pointer;
+    border: solid 2px goldenrod;
+}
+
+.logIn{
+    border: blue solid 3px;
+    border-radius: 5px;;
+    padding: 5px;
+    width: 20%;
+    margin-top: 5px;
+}
+
+.logInInput{
+    border: black solid 2px;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+.logInBtn{
+    margin: 2px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.logInBtn:hover{
+    cursor: pointer;
+    border: solid 2px goldenrod;
+}
+
+.bookmarkedPosts{
+    margin-left: 315px;
+}
+
+.profilePosts{
+    margin-left: 330px;
+}
+
+.createPost{
+    margin-left: 330px;
+    margin-top: 10px;
+    border: black solid 2px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 35%
 }

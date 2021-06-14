@@ -9,7 +9,6 @@ function InsulinPumps(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm insulin pumps</p>
         </div>
     );
 }

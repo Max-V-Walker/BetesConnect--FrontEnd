@@ -9,7 +9,6 @@ function OtherTopics(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <h1>I'm other topics</h1>
         </div>
     );
 }

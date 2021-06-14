@@ -9,7 +9,6 @@ function Complications(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm complications</p>
         </div>
     );
 }

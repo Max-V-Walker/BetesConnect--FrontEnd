@@ -9,7 +9,6 @@ function TestingSugar(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm testing blood sugar</p>
         </div>
     );
 }

@@ -9,7 +9,6 @@ function InsulinSupplyAssist(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm assistance for insulin or other medical supplies</p>
         </div>
     );
 }

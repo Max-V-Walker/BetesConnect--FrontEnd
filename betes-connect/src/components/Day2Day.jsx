@@ -9,7 +9,6 @@ function Day2Day(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <h1>I'm day2day</h1>
         </div>
     );
 }

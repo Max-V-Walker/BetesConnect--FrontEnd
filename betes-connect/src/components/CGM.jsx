@@ -9,7 +9,6 @@ function CGM(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm CGM's</p>
         </div>
     );
 }

@@ -9,7 +9,6 @@ function MeetUps(props) {
             <Header />
             <Sidebar />
             <CreatePost />
-            <p>I'm meet ups</p>
         </div>
     );
 }
